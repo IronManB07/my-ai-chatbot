@@ -34,7 +34,7 @@ async function sendMessage() {
         "Authorization": `Bearer ${apiKey}`
       },
       body: JSON.stringify({
-        model: "deepseek-chat", // Use the correct model name
+        model: "deepseek-coder", // Use the correct model name
         messages: [{ role: "user", content: userMessage }]
       })
     });
