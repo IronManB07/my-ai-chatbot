@@ -1,52 +1,99 @@
-// ✅ Base64 Encoded API Key
-const encodedKey = "aGZfSE5KV0JXU2VMaXFRQVphZ0Z2TFVrTnNaeHlVSXJTWFRWUw==";  // Securely encoded
-const API_KEY = atob(encodedKey);
+/* General body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f4f6;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
-// ✅ Hugging Face API URL for LLaMA 2
-const API_URL = "https://api-inference.huggingface.co/models/meta-llama/Llama-2-7b-chat-hf";
+/* Chat container styles */
+.chat-container {
+    width: 450px;
+    height: 600px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
 
-// ✅ Send User Message and Get Bot Response
-async function sendMessage() {
-    const userInput = document.getElementById("userInput").value;
+/* Header styles */
+.chat-header {
+    background-color: #0b6cf1;
+    padding: 12px;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
 
-    // ✅ Display user message in chatbox
-    if (userInput.trim() === "") return;
-    document.getElementById("chatbox").innerHTML += `<p><strong>You:</strong> ${userInput}</p>`;
+/* Chatbox styles */
+.chatbox {
+    flex-grow: 1;
+    padding: 12px;
+    overflow-y: auto;
+    border-top: 1px solid #e5e7eb;
+}
 
-    // ✅ Prepare request data
-    const data = {
-        inputs: userInput,  // User message to LLaMA 2
-    };
+/* User and Bot messages */
+p {
+    margin: 6px 0;
+}
 
-    try {
-        // ✅ Fetch API response
-        const response = await fetch(API_URL, {
-            method: "POST",
-            headers: {
-                "Authorization": `Bearer ${API_KEY}`,
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-        });
+/* User message styles */
+p strong {
+    color: #4a5568;
+}
 
-        // ✅ Check if the response is successful
-        if (!response.ok) {
-            throw new Error(`API error: ${response.status}`);
-        }
+/* Bot message styles */
+p.bot-message {
+    background-color: #edf2f7;
+    padding: 8px 12px;
+    border-radius: 8px;
+    max-width: 80%;
+}
 
-        // ✅ Parse API response
-        const result = await response.json();
+/* Input and button styles */
+.chat-input {
+    display: flex;
+    padding: 12px;
+    border-top: 1px solid #e5e7eb;
+    background-color: #f9fafb;
+}
 
-        // ✅ Extract bot's response
-        const botResponse = result[0]?.generated_text || "Sorry, I couldn't process that.";
+#userInput {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+}
 
-        // ✅ Display bot response
-        document.getElementById("chatbox").innerHTML += `<p class="bot-message"><strong>Bot:</strong> ${botResponse}</p>`;
-    } catch (error) {
-        console.error("Error:", error);
-        document.getElementById("chatbox").innerHTML += `<p class="bot-message"><strong>Error:</strong> Unable to get a response. Check console for details.</p>`;
+#sendButton {
+    margin-left: 8px;
+    padding: 10px 20px;
+    background-color: #0b6cf1;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#sendButton:hover {
+    background-color: #0852c1;
+}
+
+/* Responsive design */
+@media screen and (max-width: 500px) {
+    .chat-container {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
     }
-
-    // ✅ Clear input box
-    document.getElementById("userInput").value = "";
 }
