@@ -1,5 +1,5 @@
 // ✅ Add your DeepSeek API Key here
-const API_KEY = "c2ef91b847e54e1c97af49ac74af1dd6";
+const API_KEY = "sk-ba00893a5df24df68a055059593c6d3b";
 
 // ✅ CORS Proxy to avoid errors
 const API_URL = "https://corsproxy.io/?https://api.deepseek.com/v1/chat/completions";
