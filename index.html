@@ -1,124 +1,30 @@
-/* General Body Styling */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f7f7f8;
-    margin: 0;
-    padding: 0;
-}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>AI Chatbot Powered by DeepSeek</title>
+    <!-- Link to CSS -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <!-- Chat Container -->
+    <div id="chat-container">
+        <!-- Chat Header -->
+        <div id="chat-header">
+            AI Chatbot Powered by DeepSeek
+        </div>
 
-/* Chat Container */
-#chat-container {
-    width: 60%;
-    margin: 30px auto;
-    background-color: #ffffff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
-}
+        <!-- Chatbox Area -->
+        <div id="chatbox"></div>
 
-/* Chat Header */
-#chat-header {
-    background-color: #4a90e2;
-    color: #fff;
-    padding: 15px;
-    font-size: 18px;
-    text-align: center;
-    font-weight: bold;
-}
+        <!-- Input Area -->
+        <div id="input-area">
+            <input type="text" id="user-input" placeholder="Ask me anything..." autocomplete="off">
+            <button id="send-btn" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
 
-/* Chatbox Styling */
-#chatbox {
-    height: 400px;
-    overflow-y: auto;
-    padding: 15px;
-    background-color: #f7f7f8;
-    border-bottom: 1px solid #ddd;
-}
-
-/* User and Bot Messages */
-.message {
-    margin-bottom: 15px;
-    display: flex;
-    align-items: flex-start;
-}
-
-.user {
-    justify-content: flex-end;
-    text-align: right;
-}
-
-.bot {
-    justify-content: flex-start;
-    text-align: left;
-}
-
-/* Message Bubbles */
-.message .bubble {
-    max-width: 70%;
-    padding: 12px 15px;
-    border-radius: 18px;
-    line-height: 1.4;
-    font-size: 14px;
-}
-
-/* User Bubble */
-.user .bubble {
-    background-color: #d1e8ff;
-    color: #333;
-    border-bottom-right-radius: 0;
-}
-
-/* Bot Bubble */
-.bot .bubble {
-    background-color: #f0f0f0;
-    color: #333;
-    border-bottom-left-radius: 0;
-}
-
-/* Input Area */
-#input-area {
-    display: flex;
-    padding: 10px;
-    background-color: #fff;
-    border-top: 1px solid #ddd;
-}
-
-/* Input Field */
-#user-input {
-    flex-grow: 1;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    outline: none;
-}
-
-/* Send Button */
-#send-btn {
-    margin-left: 10px;
-    padding: 12px 18px;
-    background-color: #4a90e2;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-/* Send Button Hover Effect */
-#send-btn:hover {
-    background-color: #357abd;
-}
-
-/* Scrollbar */
-#chatbox::-webkit-scrollbar {
-    width: 8px;
-}
-
-#chatbox::-webkit-scrollbar-thumb {
-    background-color: #bbb;
-    border-radius: 4px;
-}
-
-#chatbox::-webkit-scrollbar-thumb:hover {
-    background-color: #999;
-}
+    <!-- Link to JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>
