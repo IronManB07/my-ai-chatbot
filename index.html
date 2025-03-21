@@ -2,43 +2,22 @@
 <html>
 <head>
     <title>AI Chatbot Powered by LLaMA 2</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f9f9f9;
-        }
-        #chatbox {
-            width: 80%;
-            height: 400px;
-            border: 1px solid #ccc;
-            padding: 10px;
-            overflow-y: scroll;
-            background-color: #fff;
-        }
-        #userInput {
-            width: 75%;
-            padding: 10px;
-        }
-        #sendButton {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        #sendButton:hover {
-            background-color: #45a049;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
 
-    <h1>AI Chatbot Powered by LLaMA 2</h1>
-    <div id="chatbox"></div>
-    <br>
-    <input type="text" id="userInput" placeholder="Ask me anything..." />
-    <button id="sendButton" onclick="sendMessage()">Send</button>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2>AI Chatbot Powered by LLaMA 2</h2>
+        </div>
+
+        <div id="chatbox" class="chatbox"></div>
+
+        <div class="chat-input">
+            <input type="text" id="userInput" placeholder="Ask me anything..." />
+            <button id="sendButton" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
