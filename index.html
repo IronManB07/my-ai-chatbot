@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" type="text/css" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Chatbot Powered by DeepSeek</title>
+  <link rel="stylesheet" type="text/css" href="styles.css" />
 </head>
 <body>
-  <div class="chat-container">
-    <div class="chat-header">AI Chatbot Powered by DeepSeek</div>
-    <div id="chatbox"></div>
-    <div class="input-area">
-      <input type="text" id="userInput" placeholder="Ask me anything..." />
-      <button onclick="sendMessage()">Send</button>
+  <div class="container">
+    <div class="header">AI Chatbot Powered by DeepSeek</div>
+    <div class="chat-box" id="chatContainer"></div>
+    <div class="input-container">
+      <input
+        type="text"
+        id="userInput"
+        placeholder="Ask me anything..."
+      />
+      <button id="sendButton">Send</button>
     </div>
   </div>
 
