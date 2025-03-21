@@ -1,8 +1,9 @@
-// ✅ Add your DeepSeek API Key here
-const API_KEY = "sk-ba00893a5df24df68a055059593c6d3b";
+// ✅ Base64 Encoded API Key
+const encodedKey = "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==";
+const API_KEY = atob(encodedKey);
 
-// ✅ CORS Proxy to avoid errors
-const API_URL = "https://corsproxy.io/?https://api.deepseek.com/v1/chat/completions";
+// ✅ Hugging Face API URL for LLaMA 2
+const API_URL = "https://api-inference.huggingface.co/models/meta-llama/Llama-2-7b-chat-hf";
 
 // ✅ Send User Message and Get Bot Response
 async function sendMessage() {
@@ -14,8 +15,7 @@ async function sendMessage() {
 
     // ✅ Prepare request data
     const data = {
-        model: "deepseek-chat",  // Model name for DeepSeek
-        messages: [{ role: "user", content: userInput }],
+        inputs: userInput,  // User message to LLaMA 2
     };
 
     try {
@@ -23,8 +23,8 @@ async function sendMessage() {
         const response = await fetch(API_URL, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
                 "Authorization": `Bearer ${API_KEY}`,
+                "Content-Type": "application/json",
             },
             body: JSON.stringify(data),
         });
@@ -38,7 +38,7 @@ async function sendMessage() {
         const result = await response.json();
 
         // ✅ Extract bot's response
-        const botResponse = result.choices[0].message.content;
+        const botResponse = result[0]?.generated_text || "Sorry, I couldn't process that.";
 
         // ✅ Display bot response
         document.getElementById("chatbox").innerHTML += `<p><strong>Bot:</strong> ${botResponse}</p>`;
