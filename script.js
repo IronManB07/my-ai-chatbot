@@ -1,4 +1,4 @@
-const apiKey = "sk-29ef2fc760334fc681d7032ee0dd3979"; // Put your DeepSeek API key here
+const apiKey = "sk-fbf65e62c59843f599244c81f4818f4f"; // Replace with your valid DeepSeek API key
 const apiUrl = "https://api.deepseek.com/v1/chat/completions";
 
 async function sendMessage() {
