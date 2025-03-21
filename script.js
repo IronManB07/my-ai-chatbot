@@ -1,5 +1,6 @@
 const API_KEY = "sk-c2ef91b847e54e1c97af49ac74af1dd6";  // Paste your DeepSeek API Key here
-const API_URL = "https://api.deepseek.com/v1/chat/completions";
+const API_URL = "https://cors-anywhere.herokuapp.com/https://api.deepseek.com/v1/chat/completions";
+
 
 async function sendMessage() {
     const userInput = document.getElementById("userInput").value;
