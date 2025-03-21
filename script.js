@@ -6,7 +6,6 @@ const apiUrl = "https://openrouter.ai/api/v1/chat/completions"; // Correct OpenR
 const userInput = document.getElementById("userInput");
 const sendButton = document.getElementById("sendButton");
 const chatContainer = document.getElementById("chatContainer");
-
 // Function to display messages in the chatbox
 function appendMessage(role, content) {
   const messageElement = document.createElement("div");
