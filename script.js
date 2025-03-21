@@ -1,14 +1,14 @@
-const apiKey = "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"; // Replace with your valid DeepSeek API key
-const apiUrl = "https://api.deepseek.com/v1/chat/completions";
+const apiKey = "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"; // Put your OpenRouter API Key here
+const apiUrl = "https://openrouter.ai/api/v1/chat/completions";
 
 async function sendMessage() {
     const userInput = document.getElementById("user-input").value;
-    if (!userInput) return;
+    if (userInput === "") return;
 
-    const chatBox = document.getElementById("chat-box");
-    chatBox.innerHTML += `<p class="user-message"><strong>You:</strong> ${userInput}</p>`;
-    document.getElementById("user-input").value = "";
+    // Display user message
+    displayMessage(userInput, "user");
 
+    // Call API and get bot response
     try {
         const response = await fetch(apiUrl, {
             method: "POST",
@@ -17,21 +17,31 @@ async function sendMessage() {
                 "Authorization": `Bearer ${apiKey}`,
             },
             body: JSON.stringify({
-                model: "deepseek-chat",
+                model: "openrouter/chatgpt-3.5", // Change if using other models like gpt-4
                 messages: [{ role: "user", content: userInput }],
             }),
         });
 
         if (!response.ok) {
-            throw new Error("Error fetching response.");
+            throw new Error(`API Error: ${response.statusText}`);
         }
 
         const data = await response.json();
-        const botMessage = data.choices[0].message.content;
-        chatBox.innerHTML += `<p class="bot-message"><strong>Bot:</strong> ${botMessage}</p>`;
-        chatBox.scrollTop = chatBox.scrollHeight;
+        const botMessage = data.choices[0].message.content.trim();
+        displayMessage(botMessage, "bot");
     } catch (error) {
         console.error("Error:", error);
-        chatBox.innerHTML += `<p class="bot-message"><strong>Error:</strong> Unable to get a response. Check console for details.</p>`;
+        displayMessage("Error: Unable to get a response. Check console for details.", "bot");
     }
+
+    document.getElementById("user-input").value = "";
+}
+
+function displayMessage(message, sender) {
+    const chatLog = document.getElementById("chat-log");
+    const messageDiv = document.createElement("div");
+    messageDiv.className = sender === "user" ? "user-message" : "bot-message";
+    messageDiv.innerHTML = `<strong>${sender === "user" ? "You" : "Bot"}:</strong> ${message}`;
+    chatLog.appendChild(messageDiv);
+    chatLog.scrollTop = chatLog.scrollHeight;
 }
