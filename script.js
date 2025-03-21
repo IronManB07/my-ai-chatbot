@@ -1,5 +1,5 @@
 // ✅ Base64 Encoded API Key
-const encodedKey = "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==";
+const encodedKey = "aGZfSE5KV0JXU2VMaXFRQVphZ0Z2TFVrTnNaeHlVSXJTWFRWUw==";  // Securely encoded
 const API_KEY = atob(encodedKey);
 
 // ✅ Hugging Face API URL for LLaMA 2
@@ -41,10 +41,10 @@ async function sendMessage() {
         const botResponse = result[0]?.generated_text || "Sorry, I couldn't process that.";
 
         // ✅ Display bot response
-        document.getElementById("chatbox").innerHTML += `<p><strong>Bot:</strong> ${botResponse}</p>`;
+        document.getElementById("chatbox").innerHTML += `<p class="bot-message"><strong>Bot:</strong> ${botResponse}</p>`;
     } catch (error) {
         console.error("Error:", error);
-        document.getElementById("chatbox").innerHTML += `<p><strong>Error:</strong> Unable to get a response. Check console for details.</p>`;
+        document.getElementById("chatbox").innerHTML += `<p class="bot-message"><strong>Error:</strong> Unable to get a response. Check console for details.</p>`;
     }
 
     // ✅ Clear input box
