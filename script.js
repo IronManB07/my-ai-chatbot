@@ -10,7 +10,7 @@ async function sendMessage() {
     appendMessage("You", userInput, "user");
 
     // Prepare API request
-    const apiUrl = "https://openrouter.ai/api/v1/chat/completions";
+    const apiUrl = "https://openrouter.ai/api/v1";
     const requestBody = {
         model: "deepseek-ai/deepseek-chat",
         messages: [{ role: "user", content: userInput }],
