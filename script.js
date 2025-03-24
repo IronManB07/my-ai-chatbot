@@ -1,4 +1,4 @@
-const API_KEY = "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"; // Your OpenRouter API key
+const API_KEY = "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"; // Your OpenRouter API key
 
 async function sendMessage() {
     const userInput = document.getElementById("user-input").value;
